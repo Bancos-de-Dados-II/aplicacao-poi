@@ -21,8 +21,9 @@
 <body>
     <div id="map"></div>
     <script>
-        var map = L.map('map').setView([-6.8863, -38.5559], 14);
-
+        let center = [-6.8863, -38.5559];
+        var map = L.map('map').setView(center, 14);
+        let marker = L.marker(center).addTo(map);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -32,8 +33,13 @@
 
         map.on('locationfound', e =>{
             map.setView(e.latlng);
-            L.marker(e.latlng).addTo(map);
-        })
+            marker.setLatLng(e.latlng);
+        });
+
+        map.on('click', e=>{
+            map.setView(e.latlng);
+            marker.setLatLng(e.latlng);
+        });
 
     </script>
 </body>
