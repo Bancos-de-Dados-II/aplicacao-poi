@@ -24,7 +24,8 @@
         let center = [-6.8863, -38.5559];
         var map = L.map('map').setView(center, 14);
         let marker = L.marker(center,{
-            draggable: true
+            draggable: true,
+            opacity: 0.7
         }).addTo(map);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
