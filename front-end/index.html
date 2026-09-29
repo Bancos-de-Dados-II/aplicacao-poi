@@ -24,6 +24,17 @@
         <button id="btnBuscar">Buscar</button>
     </div>
     <div id="map"></div>
+    <div id="form">
+        <input type="text" id="campoNome" placeholder="Informe o nome">
+        <input type="text" id="campoDescricao" placeholder="Informe a descrição">
+        <select id="campoTipo">
+            <option value="Educação">Educação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Saúde">Saúde</option>
+            <option value="Trabalho">Trabalho</option>
+        </select>
+        <button id="btnSalvar">Salvar</button>
+    </div>
     <script>
         let center = [-6.8863, -38.5559];
         var map = L.map('map',{
