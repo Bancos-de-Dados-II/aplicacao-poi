@@ -58,10 +58,18 @@
         
         botaoBuscar.addEventListener('click', async ()=>{
             let localBuscar = document.getElementById('localBuscar').value;
+            const url = 
             fetch(`https://nominatim.openstreetmap.org/search?q=${localBuscar}&format=json`)
                 .then(response => response.json())
                 .then(data =>{
-                    console.log(data);
+                    if(data.length > 0){
+                        const lat = data[0].lat;
+                        const lon = data[0].lon;
+                        map.setView([lat, lon], 14);
+                        marker.setLatLng([lat, lon]);
+                    } else {
+                        alert('Local não encontrado');
+                    }
                 });
         });
 
