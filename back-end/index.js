@@ -1,4 +1,4 @@
-import sequelize from 
+import sequelize from
   './database/sequelize.js';
 import { DataTypes } from 'sequelize';
 
@@ -14,7 +14,7 @@ const User = sequelize.define(
       type: DataTypes.STRING,
       // allowNull defaults to true
     },
-    email:{
+    email: {
       type: DataTypes.STRING,
       primaryKey: true
     }
@@ -25,3 +25,13 @@ const User = sequelize.define(
 );
 
 User.sync();
+
+User.create({
+  firstName: 'Paulo',
+  lastName: 'Freitas',
+  email: 'f.freitas@ifpb.edu.br'
+}).then((user) => {
+  console.log('Criado com sucesso');
+}).catch((error) => {
+  console.log('Falha ao criar', error);
+});
