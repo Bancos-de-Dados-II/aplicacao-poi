@@ -2,36 +2,30 @@ import sequelize from
   './database/sequelize.js';
 import { DataTypes } from 'sequelize';
 
-const User = sequelize.define(
-  'User',
-  {
-    // Model attributes are defined here
-    firstName: {
+const Poi = sequelize.define(
+  'Poi',{
+    nome:{
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
-    lastName: {
-      type: DataTypes.STRING,
-      // allowNull defaults to true
+    descricao:{
+      type: DataTypes.STRING
     },
-    email: {
+    tipo:{
       type: DataTypes.STRING,
+      enum: ['Educação', 'Lazer', 'Saúde', 
+        'Trabalho']
+    },
+    localizacao:{
+      type: DataTypes.GEOMETRY('POINT'),
+      allowNull: false
+    },
+    id: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       primaryKey: true
     }
-  },
-  {
-    // Other model options go here
-  },
+  }
 );
 
-User.sync();
-
-User.create({
-  firstName: 'Paulo',
-  lastName: 'Freitas',
-  email: 'f.freitas@ifpb.edu.br'
-}).then((user) => {
-  console.log('Criado com sucesso');
-}).catch((error) => {
-  console.log('Falha ao criar', error);
-});
+Poi.sync();
