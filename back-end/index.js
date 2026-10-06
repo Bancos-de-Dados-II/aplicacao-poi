@@ -9,6 +9,9 @@ app.use(express.json());
 
 const port = process.env.API_PORT || 3000;
 
+import PoiRouter from './router/PoiRouter.js';
+app.use('/pois', PoiRouter);
+
 app.listen(port, ()=>{
   console.log('Aplicação rodando na porta '+port);
 });
