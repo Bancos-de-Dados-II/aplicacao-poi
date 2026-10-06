@@ -1,5 +1,5 @@
 import sequelize from
-  './database/sequelize.js';
+  '../database/sequelize.js';
 import { DataTypes } from 'sequelize';
 
 const Poi = sequelize.define(
