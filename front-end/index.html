@@ -84,6 +84,20 @@
                 });
         });
 
+        carregarPontos();
+
+        async function carregarPontos(){
+            fetch('https://aplicacao-poi.onrender.com/pois')
+                .then(response => response.json())
+                .then(data =>{
+                    data.forEach(ponto =>{
+                        const marker = L.marker(ponto.localizacao.coordinates)
+                            .addTo(map);
+                        marker.bindPopup(ponto.nome)
+                    });
+                });
+        }
+
     </script>
 </body>
 
