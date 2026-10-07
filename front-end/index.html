@@ -113,7 +113,18 @@
                 tipo,
                 localizacao
             }
-            console.log(JSON.stringify(ponto));
+            fetch('https://aplicacao-poi.onrender.com/pois', {
+                method : 'POST',
+                body: JSON.stringify(ponto),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                if(response.status === 201){
+                    alert('Salvo com sucesso');
+                    window.location.reload();
+                }
+            });
         });
 
     </script>
