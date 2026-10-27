@@ -3,7 +3,7 @@ import { randomUUID } from 'crypto';
 
 const PoiSchema = new mongoose.Schema({
   _id: {
-    type: UUID,
+    type: 'UUID',
     default: () => randomUUID(),
     required: true
   },
@@ -20,7 +20,6 @@ const PoiSchema = new mongoose.Schema({
     enum: ['Educação', 'Lazer', 'Saúde', 'Trabalho']
   },
   localizacao:{
-    required: true,
     type: {
       type: String,
       enum: ['Point'],
