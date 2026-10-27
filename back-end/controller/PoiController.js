@@ -5,6 +5,12 @@ export async function getPois(req,res){
     res.json(pois);
 }
 
+export async function getPoiByText(req, res){
+    const pois = await Poi.find(
+        {$text:{$search: req.params.text}});
+    res.json(pois);
+}
+
 export async function createPoi(req,res){
     const user = await Poi.insertOne(req.body);
     if(user){
