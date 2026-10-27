@@ -19,3 +19,16 @@ export async function createPoi(req,res){
     }
     res.status(400).json({ message: "Erro ao criar Poi" });
 }
+
+export async function deletePoi(req,res){
+    const user = await Poi.deleteOne({_id: req.params.id});
+    if(user.deletedCount>0){
+        res.status(200).json({
+            mensagem:'Deletado com sucesso'
+        });
+        return;
+    }
+    res.status(400).json({
+        mensagem:'usuário não encontrado'
+    });
+}
