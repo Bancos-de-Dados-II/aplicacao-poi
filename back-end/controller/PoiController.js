@@ -6,5 +6,10 @@ export async function getPois(req,res){
 }
 
 export async function createPoi(req,res){
-    //TODO
+    const user = await Poi.insertOne(req.body);
+    if(user){
+        res.status(201).json(user);
+        return;
+    }
+    res.status(400).json({ message: "Erro ao criar Poi" });
 }
