@@ -32,3 +32,18 @@ export async function deletePoi(req,res){
         mensagem:'usuário não encontrado'
     });
 }
+
+export async function updatePoi(req,res){
+    const user = await Poi.updateOne({_id: req.params.id},
+        {$set: req.body}
+    );
+    if(user.modifiedCount>0){
+        res.json({
+            mensagem:"Modificado com sucesso"
+        });
+        return;
+    }
+    res.status(400).json({
+        mensagem: "Usuário não encontrado"
+    })
+}
