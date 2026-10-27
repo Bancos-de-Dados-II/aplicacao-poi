@@ -20,6 +20,7 @@ const PoiSchema = new mongoose.Schema({
     enum: ['Educação', 'Lazer', 'Saúde', 'Trabalho']
   },
   localizacao:{
+    required: true,
     type: {
       type: String,
       enum: ['Point'],
@@ -31,3 +32,7 @@ const PoiSchema = new mongoose.Schema({
     }
   }
 });
+
+const Poi = mongoose.model('Poi', PoiSchema);
+
+export default Poi;
