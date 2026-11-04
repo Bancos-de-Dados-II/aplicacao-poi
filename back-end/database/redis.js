@@ -6,8 +6,8 @@ const client = createClient({
     url: process.env.REDIS_URL
 }).on("error", (err)=>{
     console.log('Falha na conexão com o redis');
-}).then(()=>{
+}).connect().then(()=>{
     console.log('Conectado com o redis');
-});
+})
 
 export default client;
