@@ -9,6 +9,9 @@ app.use(express.json());
 
 const port = process.env.API_PORT || 3000;
 
+import { rateLimit } from "./middleware/rate-limit.js";
+app.use(rateLimit);
+
 import PoiRouter from './router/PoiRouter.js';
 app.use('/pois', PoiRouter);
 
